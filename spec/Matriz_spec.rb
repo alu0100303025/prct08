@@ -1,4 +1,4 @@
-require "Matritz.rb"
+require "Matriz.rb"
 
 describe Matriz do
 
