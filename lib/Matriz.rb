@@ -1,8 +1,10 @@
+require "Fraccion.rb"
+
 class Matriz
    attr_reader :filas,:columnas, :valor, :matriz, :m1, :m2
    attr_writer :resultado
 
-def initialize( valor_entrada)
+def initialize( valor_entrada) 
         @filas = valor_entrada.length
 	@columnas = valor_entrada[0].length
    	@matriz =  Array.new(filas){Array.new(columnas)}
