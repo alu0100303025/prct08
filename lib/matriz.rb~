@@ -1,0 +1,10 @@
+class Matriz
+   attr_reader :filas,:columnas, :valor
+   include Comparable
+
+def hacer_matriz(filas,columnas, valor)
+	array_devolucion = Array.new(filas){Array.new(columnas, valor)}
+end
+      
+
+end

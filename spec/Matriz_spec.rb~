@@ -1,0 +1,15 @@
+require "Matritz.rb"
+
+describe Matriz do
+   before :each do
+      @obj1 = Fraccion.new(1,2)
+
+   end
+   
+   it "Deberia tener un numerador" do
+      @obj1.num.should  == 1 
+   end
+
+end
+
+
