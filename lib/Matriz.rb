@@ -11,10 +11,10 @@ end
 def to_s
         i=0
 	txt = "";
-        rango = 0...matriz[0].length
+        rango = 0...@filas
         rango_txt = rango.to_a
         txt += "\n   #{rango_txt.join("  ")}\n"
-        for fila in matriz
+        for fila in @matriz
                 txt += "#{i} #{fila}\n"
                 i += 1
         end
@@ -76,7 +76,7 @@ def [](i,j)
   @matriz[i][j]
 end
 
-def =(m1)
+def = (m1)
    filas = m1.filas
    columnas = m1.columnas
    matriz =  Array.new(filas){Array.new(columnas)}
