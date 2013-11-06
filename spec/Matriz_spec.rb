@@ -4,12 +4,8 @@ describe Matriz do
  before :each do
     #@matriz1 = Matritz.new([1 , 2, 3],[4, 5 , 6],[7, 8, 9])
 
-    @matriz2 = Matritz.new([1,2],[3,4])
-    @matriz3 = Matritz.new([5, 6],[7,8])
-    @dimensiones=[[@matriz2.length, @matriz2[0].length],[@matriz3.length, @matriz3[0].length]]
-    @filas_final = dimensiones[0][0]
-    @columnas_final = dimensiones[1][1]
-    @resultado = Array.new(filas_final){Array.new(columnas_final, 0)}
+    @matriz2 = Matriz.new([[1,2],[3,4]])
+    @matriz3 = Matriz.new([[5, 6],[7,8]])
   end  
 
 describe "Suma de Matrices" do

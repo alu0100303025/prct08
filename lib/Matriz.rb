@@ -2,9 +2,15 @@ class Matriz
    attr_reader :filas,:columnas, :valor, :matriz, :m1, :m2
    attr_writer :resultado
 
-def initialize(fil, col)
-	@filas = fil;
-	@columnas = col;
+def initialize( valor_entrada)
+        @filas = valor_entrada.length
+	@columnas = valor_entrada[0].length
+   	@matriz =  Array.new(filas){Array.new(columnas)}
+   	for i in 0...@filas
+       		for j in 0...@columnas
+          	matriz[i][j] = valor_entrada[i][j]
+       		end
+   	end
 end
 
 
@@ -36,14 +42,14 @@ def hacer_matriz(filas,columnas, valor)
 end
 
 def *(m2)
-        dimensiones=[[@filas, @columnas,m2.filas, m2.columnas]]
+        dimensiones=[[@filas, @columnas],[m2.filas, m2.columnas]]
         filas_final = dimensiones[0][0]
         columnas_final = dimensiones[1][1]
         resultado = Array.new(filas_final){Array.new(columnas_final, 0)}
-        for i in 0...dimensiones[0][0]
-                for j in 0...dimensiones[1][1]
+        for i in 0...@filas
+                for j in 0...m2.columnas
                         temp = Array.new(dimensiones[0][0],0)
-                        for k in 0...dimensiones[0][1]
+                        for k in 0...@columnas
                                 val1 = matriz[i][k]
                                 val2 = m2[k][j]
                                 temp[k] += val1 * val2
@@ -56,16 +62,15 @@ end
 
 
 def +(m2)
-        dimensiones=[[@filas, @columnas,m2.filas, m2.columnas]]
-	filas_final = dimensiones[0][0]
-	columnas_final = dimensiones[1][1]
+	filas_final = @filas
+	columnas_final = @columnas
 	resultado = Array.new(filas_final){Array.new(columnas_final, 0)}
-	for i in 0...dimensiones[0][0]
-		for j in 0...dimensiones[1][1]
+	for i in 0...@filas
+		for j in 0...@columnas
 			resultado[i][j] = @matriz[i][j] + m2[i][j]
 		end 
 	end
-	return resultado
+	return Matriz.new(resultado)
 end
 
 def []=(i,j,x)
@@ -76,17 +81,29 @@ def [](i,j)
   @matriz[i][j]
 end
 
-def = (m1)
-   filas = m1.filas
-   columnas = m1.columnas
-   matriz =  Array.new(filas){Array.new(columnas)}
-   for i in 0...filas
-       for j in 0...columnas
-          matriz[i][j] = m1[i][j]
-       end
-   end
-   resultado = Matriz.new(filas, columnas)
+def == (other)
+ 	filas_final = @filas
+	columnas_final = @columnas
+	resultado = true
+	for i in 0...@filas
+		for j in 0...@columnas
+			resultado &= (@matriz[i][j] == m2[i][j])
+		end 
+	end
+	return(resultado)
+end 
+
+#def = (m1)
+#   filas = m1.filas
+#   columnas = m1.columnas
+#   matriz =  Array.new(filas){Array.new(columnas)}
+#   for i in 0...filas
+#       for j in 0...columnas
+#          matriz[i][j] = m1[i][j]
+#       end
+#   end
+#   resultado = Matriz.new(filas, columnas)
    
-end
+#end
 
 end
