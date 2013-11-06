@@ -26,16 +26,16 @@ def to_s
         end
 	return txt
 end
-#def muestra_matriz(matriz)
-#	i=0
-#	rango = 0...matriz[0].length
-#	rango_txt = rango.to_a
-#	print "\n   #{rango_txt.join("  ")}\n"
-#	for fila in matriz
-#		puts "#{i} #{fila}"
-#		i += 1
-#	end
-#end
+def muestra_matriz(matriz)
+	i=0
+	rango = 0...matriz[0].length
+	rango_txt = rango.to_a
+	print "\n   #{rango_txt.join("  ")}\n"
+	for fila in matriz
+		puts "#{i} #{fila}"
+		i += 1
+	end
+end
 
 def hacer_matriz(filas,columnas, valor)
 	array_devolucion = Array.new(filas){Array.new(columnas, valor)}
@@ -57,7 +57,7 @@ def *(m2)
                         resultado[i][j] = temp.reduce(:+)
                 end
         end
-        return resultado
+        return Matriz.new(resultado)
 end
 
 
@@ -77,8 +77,11 @@ def []=(i,j,x)
    @matriz[i][j] = x
 end
 
-def [](i,j)
-  @matriz[i][j]
+def [](i,j)  
+  @matriz[i]
+end
+def [](i)
+  @matriz[i]
 end
 
 def == (other)
@@ -87,7 +90,7 @@ def == (other)
 	resultado = true
 	for i in 0...@filas
 		for j in 0...@columnas
-			resultado &= (@matriz[i][j] == m2[i][j])
+			resultado &= (@matriz[i][j] == other[i][j])
 		end 
 	end
 	return(resultado)

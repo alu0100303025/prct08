@@ -10,15 +10,15 @@ describe Matriz do
 
 describe "Suma de Matrices" do
     it "Se sumar correctamente" do
-	@matriz2 + @matriz3
-      	@resultado.should =~ [[5,6],[7,8]] 
+	@resultado = @matriz2 + @matriz3
+      	@resultado.should == Matriz.new([[6,8],[10,12]]) 
     end
   end
 
 describe "Multiplicacion de Matrices" do
 	it "Se multiplicar correctamente" do
-	@matriz2 * @matriz3
-	@resultado.should =~ [[19,22],[43,50]] 
+	@resultado = @matriz2 * @matriz3
+	@resultado.should == Matriz.new([[19,22],[43,50]])
 	end
 
 end
